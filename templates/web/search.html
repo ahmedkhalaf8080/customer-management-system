@@ -1,0 +1,86 @@
+{% extends 'base.html' %}
+
+
+
+
+
+{% block content %}
+
+<div class="container mt-5">
+
+    <!-- Header -->
+    <div class="d-flex justify-content-between align-items-center mb-4">
+        <h4>
+            🔍 Search Results 
+            {% if query %}
+                for "<span class="text-primary">{{ query }}</span>"
+            {% endif %}
+        </h4>
+
+        <a href="{% url 'dashboard' %}" class="btn btn-secondary">
+            ⬅ Back
+        </a>
+    </div>
+
+    <!-- Card -->
+    <div class="card shadow-lg">
+        <div class="card-body">
+
+            {% if results %}
+            <div class="table-responsive">
+                <table class="table table-hover text-center align-middle">
+
+                    <thead class="table-dark">
+                        <tr>
+                            <th>ID</th>
+                            <th>First Name</th>
+                            <th>Last Name</th>
+                            <th>Category</th>
+                            <th>Phone</th>
+                            <th>Address</th>
+                            <th>Tall</th>
+                            <th>Weight</th>
+                            <th>Date</th>
+                            <th>Action</th>
+                        </tr>
+                    </thead>
+
+                    <tbody>
+                        {% for record in results %}
+                        <tr>
+                            <td>{{ record.id }}</td>
+                            <td>{{ record.first_name }}</td>
+                            <td>{{ record.last_name }}</td>
+                            <td>{{ record.category }}</td>
+                            <td>{{ record.phone }}</td>
+                            <td>{{ record.address }}</td>
+                            <td>{{ record.tall }}</td>
+                            <td>{{ record.weight }}</td>
+                            <td>{{ record.create_at }}</td>
+                            <td>
+                                <a href="{% url 'view_record' record.id %}" 
+                                   class="btn btn-outline-primary btn-sm">
+                                   View
+                                </a>
+                            </td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+
+                </table>
+            </div>
+
+            {% else %}
+                <div class="text-center p-5">
+                    <h5 class="text-danger">🚫 No results found</h5>
+                    <p>Try searching with another keyword</p>
+                </div>
+            {% endif %}
+
+        </div>
+    </div>
+    <h1>search result</h1>
+
+</div>
+
+{% endblock %}

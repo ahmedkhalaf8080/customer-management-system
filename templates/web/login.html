@@ -1,0 +1,61 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+
+<div class="container mt-5">
+
+    <div class="card shadow-lg mx-auto" style="max-width: 400px;">
+
+        <div class="card-body p-4">
+
+            <!-- Title -->
+            <h3 class="text-center mb-4">🔐 Login to Your Account</h3>
+            <hr>
+
+            <!-- Form -->
+            <form method="post">
+                {% csrf_token %}
+
+                <!-- Fields -->
+                <div class="mb-3">
+                    {{ form.as_p }}
+                </div>
+
+                <!-- Buttons -->
+                <div class="d-flex justify-content-between mt-4">
+
+                    <a href="{% url 'register' %}" class="btn btn-outline-secondary">
+                        📝 Register
+                    </a>
+
+                    <button type="submit" class="btn btn-primary">
+                        🚀 Login
+                    </button>
+
+                </div>
+
+            </form>
+
+        </div>
+    </div>
+
+</div>
+
+{% endblock %}
+
+
+{% comment %} {% extends 'base.html' %}
+
+
+{% block content %}
+<div class="container bg-light shadow-md p-5 form-layout">
+    <h1>Login Your Account</h1>
+<form action="" method="post">
+    {% csrf_token %}
+    {{form.as_p}}
+    <button type="submit" class="btn btn-outline-primary">Login</button>
+</form>
+</div>   
+{% endblock content %} {% endcomment %}
+    
