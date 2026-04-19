@@ -9,7 +9,8 @@ from django.contrib.auth.decorators import login_required
 from django.db.models import Q
 # Create your views here.
 def index(request):
-    return render (request,'web\index.html')
+    return render(request, 'web/index.html')
+    # return render (request,'web/index.html')
 
 def register(request):
     form = CreateUserForm()
